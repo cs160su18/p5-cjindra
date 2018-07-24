@@ -19,19 +19,23 @@
     <div class="row">
       <div class="col-4">
         {% for post in posts %}
-        <p>
-          <b>{{post.title}}</b>
-        </p>
+        <h5>
+          {{post.title}}
+        </h5>
         {% endfor %}
       </div>
       <div class="col-8">
         {% for post in posts %}
         <p>
           <h3>{{post.title}}</h3>
+          <p class="info">
+            {{post.user}} &#40{{post.region}}&#41
+          </p>
+          <p> {{post.text}} </p>
           {% for answer in answers %}
             {% ifequal answer.parent post %}
             <p>
-              {{answer.user}}: {{answer.text}}
+              <bdi class="user">{{answer.user}} &#40{{answer.region}}&#41</bdi>: {{answer.text}}
             </p>
             {% endifequal %}
           {% endfor %}
@@ -50,6 +54,9 @@
       p {color: black;}
       b {color: black;}
       div {border: 1px solid black}
+      .info {color: graytext; margin-top: -23px; margin-bottom: -3px;}
+      .user {color: green; text-decoration: underline;}
+      .lowertitle {margin-bottom: 50px; margin-top: 20px;}
       
     </style>
     
